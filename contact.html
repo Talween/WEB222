@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <link rel="icon" href="media/favicon.ico" type="image/x-icon">
+    <title>Loop net</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap">
+
+    <style>
+
+        
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    margin: 0;
+    padding: 0;
+}
+
+.container h2 p {
+    padding-top: 100px;
+    padding-bottom: 10px;
+    font-size: 50px;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-bottom: 200px;
+}
+
+form {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 5px;
+    margin-top: 20px;
+}
+
+form label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+form input[type="text"], form input[type="email"], form input[type="tel"], form input[type="number"], form select, form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+}
+
+form input[type="submit"] {
+    background-color: #333;
+    color: #ffffff;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 20px;
+    border-radius: 5px;
+}
+
+form input[type="submit"]:hover {
+    background-color: #111;
+}
+
+form textarea {
+    resize: none;
+    height: 100px;
+}
+
+footer {
+    font-size: 12px;
+    width: 100%;
+    color: #673333;
+    text-align: center;
+    padding-bottom: 40px;
+}
+.background {
+            background-image: url('media/contact-background.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding-top: 100px;
+        }
+        .agent-picture {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 20px;
+        }
+
+    </style>
+    <script src="script.js"></script>
+</head>
+<body>
+    <header>
+        <h1><a href="index.html">Loop net</a></h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="properties.html">Properties</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="site.html">Site</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div class="card">
+        <main>
+            <div class="background">
+                <img src="media/agent.jpg" alt="Agent Picture" class="agent-picture">
+            <div class="container">
+            <h2><p>ENQUIRIES</p></h2>
+
+        <form onsubmit="submitForm()">
+            <label for="firstName">First Name:</label><br>
+            <input type="text" id="firstName" name="firstName" required><br>
+            <label for="lastName">Last Name:</label><br>
+            <input type="text" id="lastName" name="lastName" required><br>
+            <label for="phone">Phone:</label><br>
+            <input type="tel" id="phone" name="phone" required><br>
+            <label for="email">Email:</label><br>
+            <input type="email" id="email" name="email" required><br>
+            <label for="propertyType">Property Type:</label><br>
+            <select id="propertyType" name="propertyType" required>
+                <option value="">Select...</option>
+                <option value="house">House</option>
+                <option value="condominium">Condominium</option>
+            </select><br>
+            <label for="bedrooms">Number of Bedrooms:</label><br>
+            <input type="number" id="bedrooms" name="bedrooms" min="1" required><br>
+            <label for="bathrooms">Number of Bathrooms:</label><br>
+            <input type="number" id="bathrooms" name="bathrooms" min="1" required><br>
+            <label for="priceRange">Price Range:</label><br>
+            <input type="text" id="priceRange" name="priceRange" required><br>
+            <label for="comments">Comments:</label><br>
+            <textarea id="comments" name="comments"></textarea><br>
+            <input type="submit" value="Submit">
+        </form>
+
+    </div>
+    </main>
+    <footer>
+        © Aneesah Mohamed Arif Thakore, STUDENT ID: 130766223, WEB222NBB, 2023
+    </footer>
+</body>
+</html>

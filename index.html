@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <link rel="icon" href="media/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap">
+    
+    <title>Loop net</title>
+</head>
+<body>
+    <header>
+        <h1><a href="index.html">Loop net</a></h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="properties.html">Properties</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="site.html">Site</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section class="hero">
+            <div class="hero-content">
+                <div class="hero-image">
+                    <img src="media/agent.jpg" alt="Agent Image">
+                </div>
+                <div class="hero-description">
+                    <h2>Brian Cyr</h2>
+                    <p>Brian has been St. Albert's top realtor for the past four years. 
+                        <br>His unique industry experience running a successful home renovation and construction business, combined with over 13 years as an award-winning realtor, allows him to provide the knowledge clients need to make informed real estate decisions.</p>
+                    <a href="contact.html" class="cta-btn">Book an Appointment</a>
+                </div>
+            </div>
+            <div class="hero-video-container">
+                <video autoplay loop muted class="hero-video" id="heroVideo">
+                    <source src="./media/bgvid.mp4" type="video/mp4">
+                </video>
+            </div>
+            <div class="hero-overlay"></div>
+        </section>
+    </main>
+    <footer>
+        © Aneesah Mohamed Arif Thakore, STUDENT ID: 130766223, WEB222NBB, 2023
+    </footer>
+    <script>
+        const heroVideo = document.getElementById('heroVideo');
+        heroVideo.addEventListener('loadedmetadata', function() {
+            heroVideo.currentTime = heroVideo.duration / 2; // Start from halfway
+        });
+    </script>
+</body>
+</html>

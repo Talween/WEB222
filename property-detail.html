@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="icon" href="media/favicon.ico" type="image/x-icon">
+    <title>Loop net</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap">
+
+    <link rel="stylesheet" type="text/css" href="styles.css">
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: #f5f5f5;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+        }
+
+        #content-wrapper {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: calc(100vh - 60px);
+            margin-top: -20px;
+        }
+
+
+        #property-detail h1, p {
+            margin: 10px 0;
+            color: #333333;
+        }
+
+        #property-price {
+            font-size: 22px;
+            color: #802200;
+            font-weight: bold;
+        }
+
+        #property-availability {
+            font-size: 18px;
+            color: #008000;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        #property-availability.sold {
+            color: #ff0000;
+        }
+
+
+
+        #property-detail {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    max-width: 1200px;
+    padding-left: 5px;
+    padding-right: 20px;
+}
+
+#property-detail > div:first-child {
+    width: 40%;
+    text-align: center;
+}
+
+#property-detail img {
+    max-width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+#property-detail > div:last-child {
+    width: 55%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    text-align: left;
+}
+
+#property-images-gallery {
+    display: flex;
+    overflow-x: auto;
+    margin-top: 20px;
+    gap: 10px;
+    padding-bottom: 10px;
+}
+
+#property-images-gallery img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    cursor: pointer;
+}
+
+.rtn-btn {
+    display: inline-block;
+    background-color: #b11c14;
+    color: #fff;
+    padding: 10px 20px;
+    margin-top: 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.rtn-btn:hover {
+    background-color: #000000;
+}
+
+footer {
+            position: fixed;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            color: #a23c3c;
+            font-size: 12px;
+            text-align: center;
+            padding: 10px;
+            padding-bottom: 20px;
+            z-index: 999; 
+        }
+
+
+
+    </style>
+
+</head>
+<body>
+    <header>
+        <h1><a href="index.html">Loop net</a></h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="properties.html">Properties</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="site.html">Site</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div id="content-wrapper">
+        <div id="property-detail">
+            <div>
+                <img id="property-image" src="" alt="Property Image">
+                <div id="property-images-gallery"></div>
+            </div>
+            <div>
+                <h1 id="property-location"></h1>
+                <p id="property-description"></p>
+                <ul id="property-details"></ul>
+                <p id="property-price"></p>
+                <p id="property-availability"></p>
+                <div class="button-container">
+                    <a href="contact.html" class="cta-btn">Learn More</a>
+                    <a href="properties.html" class="rtn-btn">Go Back</a>
+                </div>
+            </div>
+        </div>
+        </div>
+        <footer>
+            © Aneesah Mohamed Arif Thakore, STUDENT ID: 130766223, WEB222NBB, 2023
+
+        </footer>
+    </div>
+
+
+    <script src="listing.js"></script>
+
+
+    <script>
+window.onload = function() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const id = parseInt(urlParams.get('id'), 10) - 1;
+    
+    const property = listings[id];
+
+    document.getElementById('property-image').src = property.image;
+    document.getElementById('property-location').textContent = property.location;
+    document.getElementById('property-description').textContent = property.description;
+    document.getElementById('property-price').textContent = property.price;
+
+    const availabilityElement = document.getElementById('property-availability');
+    availabilityElement.textContent = property.availability;
+    if (property.availability.toLowerCase() === 'sold') {
+        availabilityElement.classList.add('sold');
+    }
+
+    const propertyDetailsElement = document.getElementById('property-details');
+
+const details = [
+    { title: 'Type', value: property.type },
+    { title: 'Area', value: property.squareFeet + ' square feet'},
+    { title: 'units', value: property.units },
+    { title: 'number_of_stories', value: property.number_of_stories},      
+    { title: 'Bedrooms', value: property.bedrooms },
+    { title: 'Bathrooms', value: property.bathrooms },
+    { title: 'Kitchen', value: property.kitchen },
+    { title: 'Balconies', value: property.balconies },
+    { title: 'Hall', value: property.hall },
+    { title: 'Parking', value: property.parking },
+    { title: 'Locker', value: property.locker }
+];
+
+details.forEach(detail => {
+    const li = document.createElement('li');
+    li.textContent = `${detail.title}: ${detail.value}`;
+    propertyDetailsElement.appendChild(li);
+});
+
+
+    const gallery = document.getElementById('property-images-gallery');
+    property.moreImages.forEach((image, index) => {
+        const img = document.createElement('img');
+        img.src = image;
+        img.onclick = function() {
+            document.getElementById('property-image').src = property.moreImages[index];
+        };
+        gallery.appendChild(img);
+    });
+};
+
+    </script>
+    
+</body>
+</html>
